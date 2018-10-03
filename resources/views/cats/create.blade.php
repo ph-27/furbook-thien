@@ -1,7 +1,11 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 10/02/18
- * Time: 9:09 CH
- */
+@extends('layouts.master)
+
+@section('header')
+    <h2>Add new cat</h2>
+    @endsection
+
+@section('content')
+    {!! Form::open(['url' => '/cats']) !!}
+    @include('partials,forms.cat')
+    {!! Form::close() !!}
+    @endsection
