@@ -1,4 +1,4 @@
-@extends('layouts.master)
+@extends('layouts.master')
 
 @section('header')
     <h2>Add new cat</h2>
@@ -6,6 +6,6 @@
 
 @section('content')
     {!! Form::open(['url' => '/cats']) !!}
-    @include('partials,forms.cat')
+    @include('partials.forms.cat')
     {!! Form::close() !!}
     @endsection

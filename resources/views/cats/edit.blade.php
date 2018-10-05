@@ -1,4 +1,4 @@
-@extends('layouts.master)
+@extends('layouts.master')
 
 @section('header')
     <h2>Edit a cat</h2>
