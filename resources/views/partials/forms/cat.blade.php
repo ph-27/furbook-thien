@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -26,7 +23,7 @@
 <div class="form-group">
     {!! Form::label('breed_id', 'Breed') !!}
     <div class="form-controls">
-        {!! Form::select('breed_id', isset($breeds) ? $breeds : [], null, ['class' => 'form-control']) !!}
+        {!! Form::select('breed_id', isset($breeds) ? $breeds : [], isset($cat) ? $cat->breed_id : null, ['class' => 'form-control']) !!}
     </div>
 </div>
 {!! Form::submit('Save Cat', ['class' => 'btn btn-primary']) !!}
