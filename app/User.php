@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password'
     ];
 
     /**
@@ -27,4 +28,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $casts = [
+        'is_admin' => 'boolean',
+    ];
+
+    public function owns(Cat $cat){
+        return $this->id == $cat->user_id;
+    }
+
+    public function canEdit(Cat $cat){
+        return $this->is_admin || $this->owns($cat);
+    }
+
+    public function isAdministrator(){
+        return $this->getAttribute('is_admin');
+    }
 }
