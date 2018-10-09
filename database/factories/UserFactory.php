@@ -25,7 +25,8 @@ $factory->define(Furbook\Cat::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'date_of_birth' => $faker->date(),
-        'breed_id' =>1,
+        'breed_id' => $faker->numberBetween(1,3),
+        'user_id' => $faker->numberBetween(1,2),
         'created_at' => $faker -> unixTime(),
         'updated_at' => $faker -> unixTime()
     ];
