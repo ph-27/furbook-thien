@@ -2,11 +2,14 @@
 
 namespace Furbook\Http\Controllers;
 
+use Furbook\Breed;
 use Illuminate\Http\Request;
 use Furbook\Http\Requests\CatRequest;
 use Furbook\Cat;
 use Validator;
 use Auth;
+use Illuminate\Pagination\PaginationServiceProvider;
+
 
 class CatController extends Controller
 {
@@ -27,8 +30,13 @@ class CatController extends Controller
      */
     public function index()
     {
-        $cats = Cat::orderBy('created_at', 'DESC')->get();
+//        $cats = Cat::orderBy('created_at', 'DESC')->get();
+        $perPage = 5;
+        $cats = Cat::orderBy('created_at', 'DESC')->paginate($perPage);
         //dd($cats);
+        if(request()->ajax()) {
+            return view('partials.cat')->with('cats', $cats);
+        }
         return view('cats.index')->with('cats', $cats);
     }
 
@@ -149,10 +157,16 @@ class CatController extends Controller
      */
     public function breed($name)
     {
-        $breed = \Furbook\Breed::where('name', $name)
+        $breed = Breed::where('name', $name)
             ->first();
+//        dd($breed);
         $cats = $breed->cats;
-        //dd($cats);
+//        $perPage = 5;
+        $cats = Cat::paginate(5);
+//         dd($cats);
+        if(request()->ajax()) {
+            return view('partials.cat', compact('breed', 'cats'));
+        }
         return view('cats.index', compact('breed', 'cats'));
     }
 }

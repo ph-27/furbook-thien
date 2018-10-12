@@ -46,7 +46,7 @@ Route::get('/cats/breeds/{name}', [
 //->middleware('admin');
 
 // Test
-Route::get('test', 'TestController@_is_last_weekday_of_month');
+//Route::get('test', 'TestController@_is_last_weekday_of_month');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
