@@ -5,10 +5,9 @@
     <title>Furbook</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <!-- Jquery library -->
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 </head>
 
 <body>
@@ -27,6 +26,9 @@
             </div>
         @endif
         @yield('content')
+    </div>
+    <div id="loading" style="display: none;">
+        <img src="img/loading.gif" alt="loading" style="position: absolute;top: 7%;left: 27.5%;">
     </div>
     <!-- Scripts -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
